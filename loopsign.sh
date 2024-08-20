@@ -4,6 +4,8 @@ synced=false
 # Flag to track whether the dialog box has been displayed
 displayed=false
 
+#testing adding a change
+
 # Capture the system time before synchronization
 before_sync_time=$(date +%s)
 echo "Before sync time: $before_sync_time"
