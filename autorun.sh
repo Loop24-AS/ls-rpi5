@@ -68,7 +68,7 @@ chmod +x "$CURRENT_SCRIPT_PATH"
 rm -- "\$0"  # Delete this temporary script after execution
 EOF
             chmod +x /home/loopsign/update_and_restart.sh
-            nohup /home/loopsign/update_and_restart.sh &  # Run the update and restart in the background
+            nohup /home/loopsign/update_and_restart.sh > /dev/null 2>&1 &  # Run the update and restart in the background
             exit 0  # Exit the current script to allow the update to take place
         else
             echo "Master script is already up to date."
