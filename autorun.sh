@@ -116,15 +116,4 @@ chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh # Adjust f
 ./setresolution.sh
 ./autorefresh.sh
 ./hashgenerator.sh
-#./loopsign.sh
-
-# Start Chromium in kiosk mode and navigate to LoopSign URL
-
-# Read the hash from hash.txt on the Desktop
-HASH=$(cat /home/loopsign/Desktop/.hash.txt)
-
-sleep 5
-echo "finished sleeping"
-
-# Launch Chromium in kiosk mode with the specified URL
-#chromium-browser --start-maximized --start-fullscreen --incognito --disable-desktop-notifications --no-first-run https://edit.loopsign.eu/hash/$HASH
+./loopsign.sh
