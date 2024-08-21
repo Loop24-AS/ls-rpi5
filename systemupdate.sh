@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pkill zenity
+
 # Display a Zenity message informing the user of the process
 (
   echo "0"  # Start the progress at 0%
