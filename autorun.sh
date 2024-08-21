@@ -111,26 +111,9 @@ schedule_master_script_update_and_restart
 start_countdown
 
 # Run the updated scripts
-#cd /home/loopsign/ls-rpi5
-#chmod +x script1.sh script2.sh script3.sh script4.sh script5.sh  # Adjust filenames as needed
-#./script1.sh
-#./script2.sh
-#./script3.sh
-#./script4.sh
-#./script5.sh
-
-# Simulate running scripts sequentially
-echo "Simulating running script 1..."
-sleep 2  # Simulate time taken to run the script
-
-echo "Simulating running script 2..."
-sleep 2
-
-echo "Simulating running script 3..."
-sleep 2
-
-echo "Simulating running script 4..."
-sleep 2
-
-echo "Simulating running script 5..."
-sleep 2
+cd /home/loopsign/ls-rpi5
+chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh # Adjust filenames as needed
+./setresolution.sh
+./autorefresh.sh
+./hashgenerator.sh
+./loopsign.sh
