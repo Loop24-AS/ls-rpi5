@@ -78,15 +78,12 @@ EOF
     fi
 }
 
-# Check internet connection and time synchronization
-check_internet_and_time_sync
-
-# Start the 5-second countdown with Zenity in the background
+# Function to countdown while waiting for the secondary scripts to run
 start_countdown() {
     (
-        for i in {5..1}; do
+        for i in {10..1}; do
             echo "# Your LoopSign screen will launch in about $i seconds..."
-            echo "$(( (5 - i + 1) * 20 ))"  # Progress percentage
+            echo "$(( (10 - i + 1) * 10 ))"  # Progress percentage
             sleep 1
         done
         echo "100"  # Ensure the progress reaches 100%
@@ -97,13 +94,18 @@ start_countdown() {
                --auto-close \
                --no-cancel &
 }
-start_countdown
+
+# Check internet connection and time synchronization
+check_internet_and_time_sync
 
 # Pull the latest changes from the repository with rebase
 update_repository
 
 # Schedule the master script update and restart if needed
 schedule_master_script_update_and_restart
+
+# Show countdown while secondary scripts run
+start_countdown
 
 # Run the updated scripts
 #cd /home/loopsign/ls-rpi5
