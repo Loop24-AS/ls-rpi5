@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Function to check internet connection and time synchronization
+# Function to check internet connection and time sync
 check_internet_and_time_sync() {
     # Flag to track whether the time has been synced
     synced=false
