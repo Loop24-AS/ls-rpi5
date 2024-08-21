@@ -114,6 +114,6 @@ start_countdown
 cd /home/loopsign/ls-rpi5
 chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh # Adjust filenames as needed
 ./setresolution.sh
-./autorefresh.sh
+nohup ./autorefresh.sh &
 ./hashgenerator.sh
 ./loopsign.sh
