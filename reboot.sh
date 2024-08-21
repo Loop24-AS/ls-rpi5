@@ -8,7 +8,7 @@ CURRENT_TIME=$(date +"%H:%M")
 
 # Wait until the desired time to reboot
 while [ "$CURRENT_TIME" != "$REBOOT_TIME" ]; do
-    sleep 30
+    sleep 55
     CURRENT_TIME=$(date +"%H:%M")
 done
 
