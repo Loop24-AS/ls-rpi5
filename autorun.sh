@@ -20,6 +20,24 @@ check_internet_and_time_sync() {
         if ntpq -p | grep "*"; then
             synced=true
             echo "System time has been synchronized."
+            
+            # Capture the system time after synchronization
+            after_sync_time=$(date +%s)
+            echo "After sync time: $after_sync_time"
+
+            # Calculate the time difference in seconds
+            time_difference=$((after_sync_time - before_sync_time))
+            echo "Time difference (in seconds): $time_difference"
+
+            # Check if the time difference is 30 days or more (in seconds)
+            thirty_days_in_seconds=$((30 * 24 * 60 * 60))
+            if [ $time_difference -ge $thirty_days_in_seconds ]; then
+                echo "Time discrepancy is 30 days or more. Running additional script to update the OS and reboot..."
+                /home/loopsign/ls-rpi5/systemupdate.sh
+            else
+                echo "Time discrepancy is less than 30 days. No additional script will be run."
+            fi
+
             break
         fi
         # Display a message to the user if the time has not yet been synced and the dialog has not yet been displayed
