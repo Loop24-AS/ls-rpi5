@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set resolution to 1920x1080@60Hz
+/home/loopsign/ls-rpi5/setresolution.sh
+
 # Function to check internet connection and time sync
 check_internet_and_time_sync() {
     # Flag to track whether the time has been synced
@@ -113,7 +116,6 @@ start_countdown
 # Run the updated scripts
 cd /home/loopsign/ls-rpi5
 chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh # Adjust filenames as needed
-./setresolution.sh
 nohup ./autorefresh.sh &
 ./hashgenerator.sh
 ./loopsign.sh
