@@ -127,4 +127,4 @@ sleep 5
 echo "finished sleeping"
 
 # Launch Chromium in kiosk mode with the specified URL
-chromium-browser --start-maximized --start-fullscreen --incognito --disable-desktop-notifications --no-first-run https://edit.loopsign.eu/hash/$HASH
+#chromium-browser --start-maximized --start-fullscreen --incognito --disable-desktop-notifications --no-first-run https://edit.loopsign.eu/hash/$HASH
