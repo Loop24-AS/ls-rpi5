@@ -27,6 +27,9 @@ check_internet_and_time_sync() {
         fi
         sleep 1
     done
+
+    # Kill any running Zenity dialogs
+    pkill zenity
 }
 
 # Function to update the repository using git pull with rebase
