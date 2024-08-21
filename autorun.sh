@@ -135,7 +135,7 @@ start_countdown
 
 # Run the updated scripts
 cd /home/loopsign/ls-rpi5
-chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh reboot.sh # Adjust filenames as needed
+chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh reboot.sh systemupdate.sh # Adjust filenames as needed
 ./setresolution.sh
 nohup ./autorefresh.sh &
 ./hashgenerator.sh
