@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Set resolution to 1920x1080@60Hz
+sudo chmod +x /home/loopsign/ls-rpi5/setresolution.sh
 /home/loopsign/ls-rpi5/setresolution.sh
 
 # Function to check internet connection and time sync
@@ -33,6 +34,7 @@ check_internet_and_time_sync() {
             thirty_days_in_seconds=$((30 * 24 * 60 * 60))
             if [ $time_difference -ge $thirty_days_in_seconds ]; then
                 echo "Time discrepancy is 30 days or more. Running additional script to update the OS and reboot..."
+                sudo chmod +x /home/loopsign/ls-rpi5/systemupdate.sh
                 /home/loopsign/ls-rpi5/systemupdate.sh
             else
                 echo "Time discrepancy is less than 30 days. No additional script will be run."
@@ -116,7 +118,7 @@ start_countdown() {
                --no-cancel &
 }
 
-# Check internet connection and time synchronization
+# Check internet connection and time synchronization and run updates if neccessary
 check_internet_and_time_sync
 
 # Pull the latest changes from the repository with rebase
@@ -134,6 +136,7 @@ start_countdown
 # Run the updated scripts
 cd /home/loopsign/ls-rpi5
 chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh # Adjust filenames as needed
+./setresolution.sh
 nohup ./autorefresh.sh &
 ./hashgenerator.sh
 ./loopsign.sh
