@@ -32,14 +32,17 @@ check_internet_and_time_sync() {
     pkill zenity
 }
 
-# Function to update the repository using git pull with rebase
+# Function to update the repository using git reset --hard and git pull with rebase
 update_repository() {
     local REPO_DIR="/home/loopsign/ls-rpi5"
 
     if [ -d "$REPO_DIR/.git" ]; then
-        echo "Updating repository with git pull --rebase..."
+        echo "Resetting repository to the last commit with git reset --hard..."
         cd "$REPO_DIR"
-        git pull --rebase origin prod  # Replace 'prod' with the appropriate branch if different
+        git reset --hard
+
+        echo "Pulling the latest changes with git pull --rebase..."
+        git pull --rebase origin main  # Replace 'main' with the appropriate branch if different
         return 0
     else
         echo "Repository directory does not exist or is not a git repository. Exiting."
