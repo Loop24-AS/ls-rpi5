@@ -27,9 +27,6 @@ check_internet_and_time_sync() {
         fi
         sleep 1
     done
-
-    # Kill any running Zenity dialogs
-    pkill zenity
 }
 
 # Function to update the repository using git reset --hard and git pull with rebase
@@ -106,6 +103,9 @@ update_repository
 
 # Schedule the master script update and restart if needed
 schedule_master_script_update_and_restart
+
+# Kill any running Zenity dialogs
+pkill zenity
 
 # Show countdown while secondary scripts run
 start_countdown
