@@ -4,7 +4,7 @@ synced=false
 # Flag to track whether the dialog box has been displayed
 displayed=false
 
-#testing adding a change
+#testing adding a change and another
 
 # Capture the system time before synchronization
 before_sync_time=$(date +%s)
