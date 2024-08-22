@@ -7,7 +7,9 @@ The image is burnt on a high speed 16 GB MicroSD card. Username: loopsign || Pas
 
 ### Set headless resolution
 Use Nano and add one space and the following specification to the end of /boot/firmware/cmdline.txt:
-```video=HDMI-A-1:1920x1080@60D```
+```
+video=HDMI-A-1:1920x1080@60D
+```
 
 ### Install neccessary packages
 sudo apt install upower fonts-noto-color-emoji ntp wtype -y
