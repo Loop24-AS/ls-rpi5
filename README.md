@@ -6,12 +6,12 @@ The starting point of the setup is a Raspberry Pi 5 running on Raspberry Pi OS D
 The image is burnt on a high speed 16 GB MicroSD card. Username: loopsign || Password: loop24 || Country: Norway || Location: Oslo || Keyboard: NO / Logitech || WLAN Country: Norway
 
 ### Set headless resolution
-Use Nano and add one space and the following specification to the end of /boot/firmware/cmdline.txt:
+Edit /boot/firmware/cmdline.txt and add one space and the headless resolution specification at the end.
 ```
 sudo nano /boot/firmware/cmdline.txt
 ```
 ```
-video=HDMI-A-1:1920x1080@60D
+ video=HDMI-A-1:1920x1080@60D
 ```
 Ctrl + O to save and Ctrl + X to exit Nano.
 
