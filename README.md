@@ -13,6 +13,7 @@ sudo nano /boot/firmware/cmdline.txt
 ```
 video=HDMI-A-1:1920x1080@60D
 ```
+Ctrl + O to save and Ctrl + X to exit Nano.
 
 ### Install neccessary packages
 sudo apt install upower fonts-noto-color-emoji ntp wtype -y
