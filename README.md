@@ -27,6 +27,7 @@ Host github.com
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
 ```
+Ctrl + O to save and ctrl + X to exit Nano.
 
 Clone the repository.
 ```
