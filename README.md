@@ -5,13 +5,13 @@ The starting point of the setup is a Raspberry Pi 5 running on Raspberry Pi OS D
 
 The image is burnt on a high speed 16 GB MicroSD card. Username: loopsign || Password: loop24 || Country: Norway || Location: Oslo || Keyboard: NO / Logitech || WLAN Country: Norway
 
-# Set headless resolution
+### Set headless resolution
 Use Nano and add one space and the following specification to the end of /boot/firmware/cmdline.txt:
 video=HDMI-A-1:1920x1080@60D
 
-# Install neccessary packages
+### Install neccessary packages
 sudo apt install upower fonts-noto-color-emoji ntp wtype -y
 
-# Uninstall uneccessary packages
+### Uninstall uneccessary packages
 sudo apt remove geany firefox -y && sudo apt autoremove -y
 
