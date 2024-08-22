@@ -16,8 +16,12 @@ video=HDMI-A-1:1920x1080@60D
 Ctrl + O to save and Ctrl + X to exit Nano.
 
 ### Install neccessary packages
+```
 sudo apt install upower fonts-noto-color-emoji ntp wtype -y
+```
 
 ### Uninstall uneccessary packages
+```
 sudo apt remove geany firefox -y && sudo apt autoremove -y
+```
 
