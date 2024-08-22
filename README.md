@@ -22,10 +22,22 @@ Clone the repository.
 ```
 git clone git@github.com:Loop24-AS/ls-rpi5.git
 ```
-Copy autorun.sh to `/home/loopsign` and make it executable.
+Copy `autorun.sh` to `/home/loopsign` and make it executable.
 ```
 cp /home/loopsign/ls-rpi5/autorun.sh /home/loopsign/autorun.sh
 sudo chmod +x /home/loopsign/autorun.sh
+```
+
+### Set autorun.sh to run at boot
+Add autostart instructions to `wayfire.ini`
+```
+nano ~/.config/wayfire.ini
+```
+Add the following to the bottom of the document.
+```
+
+[autostart]
+loopsign = /home/loopsign/autorun.sh
 ```
 
 ### Set headless resolution
