@@ -5,6 +5,25 @@ The starting point of the setup is a Raspberry Pi 5 running on Raspberry Pi OS D
 
 The image is burnt on a high speed 16 GB MicroSD card. Username: loopsign || Password: loop24
 
+### Clone the hideaway repository
+Make SSH key pair.
+```
+ssh-keygen -t rsa -b 4096 -C "Raspberry Pi 5 LoopSign Player"
+```
+Add the private key to the SSH Agent.
+```
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa2
+```
+Deploy the public key to the Github repository.
+Copy the key `cat ~/.ssh/id_rsa2.pub` and paste it in the Github repository settings (Settings --> Deploy keys ---> Add deploy key). Set it to read-only access.
+
+Clone the repository.
+```
+cd /home/loopsign
+git clone git@github.com:Loop24-AS/hideaway.git
+```
+
 ### Clone the ls-rpi5 repository
 Make SSH key pair.
 ```
@@ -40,6 +59,12 @@ cp /home/loopsign/ls-rpi5/autorun.sh /home/loopsign/autorun.sh
 sudo chmod +x /home/loopsign/autorun.sh
 ```
 
+Make hidecursor.sh executable and run it
+```
+sudo chmod +x /home/loopsign/hidecursor.sh
+/home/loopsign/hidecursor.sh
+```
+
 ### Set autorun.sh to run at boot
 Add autostart instructions to `wayfire.ini`
 ```
@@ -50,30 +75,6 @@ Add the following to the bottom of the document.
 
 [autostart]
 loopsign = /home/loopsign/autorun.sh
-```
-
-### Clone the hideaway repository
-Make SSH key pair.
-```
-ssh-keygen -t rsa -b 4096 -C "Raspberry Pi 5 LoopSign Player"
-```
-Add the private key to the SSH Agent.
-```
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa2
-```
-Deploy the public key to the Github repository.
-Copy the key `cat ~/.ssh/id_rsa2.pub` and paste it in the Github repository settings (Settings --> Deploy keys ---> Add deploy key). Set it to read-only access.
-
-Clone the repository.
-```
-cd /home/loopsign
-git clone git@github.com:Loop24-AS/hideaway.git
-```
-Make hidecursor.sh executable and run it
-```
-sudo chmod +x /home/loopsign/hidecursor.sh
-/home/loopsign/hidecursor.sh
 ```
 
 ### Set headless resolution
