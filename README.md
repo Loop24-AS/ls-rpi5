@@ -32,7 +32,7 @@ Ctrl + O to save and ctrl + X to exit Nano.
 Clone the repository.
 ```
 cd /home/loopsign
-git clone -o StrictHostKeyChecking=no git@github.com:Loop24-AS/ls-rpi5.git
+git clone git@github.com:Loop24-AS/ls-rpi5.git
 ```
 Copy `autorun.sh` to `/home/loopsign` and make it executable.
 ```
@@ -50,6 +50,30 @@ Add the following to the bottom of the document.
 
 [autostart]
 loopsign = /home/loopsign/autorun.sh
+```
+
+### Clone the hideaway repository
+Make SSH key pair.
+```
+ssh-keygen -t rsa -b 4096 -C "Raspberry Pi 5 LoopSign Player"
+```
+Add the private key to the SSH Agent.
+```
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa2
+```
+Deploy the public key to the Github repository.
+Copy the key `cat ~/.ssh/id_rsa2.pub` and paste it in the Github repository settings (Settings --> Deploy keys ---> Add deploy key). Set it to read-only access.
+
+Clone the repository.
+```
+cd /home/loopsign
+git clone git@github.com:Loop24-AS/hideaway.git
+```
+Make hidecursor.sh executable and run it
+```
+sudo chmod +x /home/loopsign/hidecursor.sh
+/home/loopsign/hidecursor.sh
 ```
 
 ### Set headless resolution
