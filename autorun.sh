@@ -4,6 +4,9 @@
 sudo chmod +x /home/loopsign/ls-rpi5/setresolution.sh
 /home/loopsign/ls-rpi5/setresolution.sh
 
+# Restart udevmon to hide cursor
+sudo systemctl restart udevmon
+
 # Function to check internet connection and time sync
 check_internet_and_time_sync() {
     # Flag to track whether the time has been synced
