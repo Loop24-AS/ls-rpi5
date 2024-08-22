@@ -119,3 +119,14 @@ Open Chromium and open URL `chrome://settings/cookies`. Enable ***Allow third-pa
 
 ### Desktop
 Right click the desktop and open ***Desktop preferences***. Set `/home/loopsign/ls-rpi5/Linux background.png` as desktop background picture. Disable ***Wastebasket***. Open the ***Taskbar*** pane and set ***Size: Medium (24x24)***, ***Position: Bottom***, ***Colour: Black*** and ***Text Colour: White***.
+
+### Clear command history from terminal
+```
+history -c
+> ~/.bash_history
+```
+Close terminal.
+
+### Export image and shrink it
+Insert USB memory stick and export image.
+
