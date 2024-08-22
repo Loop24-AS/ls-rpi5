@@ -20,6 +20,7 @@ Copy the key `cat ~/.ssh/id_rsa.pub` and paste it in the Github repository setti
 
 Clone the repository.
 ```
+cd /home/loopsign
 git clone git@github.com:Loop24-AS/ls-rpi5.git
 ```
 Copy `autorun.sh` to `/home/loopsign` and make it executable.
