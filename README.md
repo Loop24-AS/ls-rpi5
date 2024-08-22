@@ -71,6 +71,11 @@ sudo apt install upower fonts-noto-color-emoji ntp wtype -y
 ```
 sudo apt remove geany firefox -y && sudo apt autoremove -y
 ```
+### Configure and set LoopSign Plymouth theme to enable LoopSign splash at boot
+```
+sudo chmod +x /home/loopsign/ls-rpi5/loopsignsplash.sh
+/home/loopsign/ls-rpi5/loopsignsplash.sh
+```
 
 ## Changes set in the GUI
 ### Raspberry Pi Configuration
