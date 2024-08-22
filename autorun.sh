@@ -37,8 +37,8 @@ check_internet_and_time_sync() {
             thirty_days_in_seconds=$((30 * 24 * 60 * 60))
             if [ $time_difference -ge $thirty_days_in_seconds ]; then
                 echo "Time discrepancy is 30 days or more. Running additional script to update the OS and reboot..."
-                sudo chmod +x /home/loopsign/ls-rpi5/systemupdate.sh
-                /home/loopsign/ls-rpi5/systemupdate.sh
+                sudo chmod +x /home/loopsign/ls-rpi5/systemupdatedialog.sh
+                /home/loopsign/ls-rpi5/systemupdatedialog.sh
             else
                 echo "Time discrepancy is less than 30 days. No additional script will be run."
             fi
@@ -138,7 +138,7 @@ start_countdown
 
 # Run the updated scripts
 cd /home/loopsign/ls-rpi5
-chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh reboot.sh systemupdate.sh hidecursor.sh loopsignsplash.sh pishrink.sh updateandreboot.sh # Adjust filenames as needed
+chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh reboot.sh systemupdatedialog.sh hidecursor.sh loopsignsplash.sh pishrink.sh updateandreboot.sh # Adjust filenames as needed
 ./setresolution.sh
 nohup ./autorefresh.sh &
 ./hashgenerator.sh
