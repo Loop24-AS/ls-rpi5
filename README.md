@@ -77,6 +77,12 @@ sudo chmod +x /home/loopsign/ls-rpi5/loopsignsplash.sh
 /home/loopsign/ls-rpi5/loopsignsplash.sh
 ```
 
+### Install and activate tweak to hide cursor
+```
+sudo chmod +x /home/loopsign/ls-rpi5/hidecursor.sh
+/home/loopsign/ls-rpi5/hidecursor.sh
+```
+
 ## Changes set in the GUI
 ### Raspberry Pi Configuration
 Right click ***Raspberry Configuration*** in the Raspberry Pi Menu and click ***Add to Desktop***. Right click ***Screen Configuration*** in the Raspberry Pi Menu and click ***Add to Desktop***.
