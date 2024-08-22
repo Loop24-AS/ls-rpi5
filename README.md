@@ -7,16 +7,21 @@ The image is burnt on a high speed 16 GB MicroSD card. Username: loopsign || Pas
 
 ### Clone the ls-rpi5 repository
 Make SSH key pair.
-```ssh-keygen -t rsa -b 4096 -C "Raspberry Pi 5 LoopSign Player"```
+```
+ssh-keygen -t rsa -b 4096 -C "Raspberry Pi 5 LoopSign Player"
+```
 Add the private key to the SSH Agent.
-```eval "$(ssh-agent -s)"
+```
+eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 ```
 Deploy the public key to the Github repository.
 Copy the key `cat ~/.ssh/id_rsa.pub` and paste it in the Github repository settings (Settings --> Deploy keys ---> Add deploy key). Set it to read-only access.
 
 Clone the repository.
-```git clone git@github.com:Loop24-AS/ls-rpi5.git```
+```
+git clone git@github.com:Loop24-AS/ls-rpi5.git
+```
 
 ### Set headless resolution
 Edit /boot/firmware/cmdline.txt and add one space and the headless resolution specification at the end.
