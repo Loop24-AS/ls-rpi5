@@ -5,7 +5,18 @@ The starting point of the setup is a Raspberry Pi 5 running on Raspberry Pi OS D
 
 ## The concept
 The purpose of the setup is to make the Raspberry Pi work as an unattended LoopSign player. Its main job is to launch the user's LoopSign screen, a static URL, in a fullscreen Chromium window. A set of bash scripts are part of this setup to make the Pi behave as intended and stably over time:
-- autorun.sh will run at boot. It will 
+- `autorun.sh` will run at boot, as defined in `~/.config/wayfire.ini`. The script performs the following tasks in order:
+ - Runs setresolution.sh to set the screen resolution to 1920x1080@60Hz if any other resolution is set.
+ - Restarts udevmon to force-hide the cursor (utilizing separate repository [hideaway.git](https://github.com/Loop24-AS/hideaway)).
+ - Waits for the system to get a working internet connection by checking if the player's date and time have synced with NTP.
+ - If after the NTP sync, the script notices that it's been more than 30 days since the last NTP sync, it runs systemupdatedialog.sh, which does a full system update and reoot.
+ - Pulls this repository for changes and implements any updates. If there are updates to itself (i.e. autorun.sh), the script restarts using the new version of itself.
+ - Re-checks the screen resolution in case there are updates to setresolution.sh.
+ - Starts autorefresh.sh which will periodically (every three hours originally) do a cache refresh of Chromium if it's running.
+ - Runs generatehash.sh to generate a unique code consisting of letters and numbers. The code is based on the Pi's ethernet MAC address and will be always be the same for each Raspberry Pi. The code is then used by Chromium (next step) to give the user an easy way to pair the player to their corresponding LoopSign screen.
+ - Runs loopsign.sh to launch Chromium in fullscreen with the LoopSign URL. The hash code from the previous step is a unique part of the URL, making it easy for the user to pair the player to their corresponding LoopSign screen without needing to connect to and control the player's settings.
+
+## Setup instructions
 
 The image is burnt on a high speed 16 GB MicroSD card. Username: loopsign || Password: loop24
 
