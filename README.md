@@ -76,12 +76,6 @@ cp /home/loopsign/ls-rpi5/autorun.sh /home/loopsign/autorun.sh
 sudo chmod +x /home/loopsign/autorun.sh
 ```
 
-Make hidecursor.sh executable and run it
-```
-sudo chmod +x /home/loopsign/hidecursor.sh
-/home/loopsign/hidecursor.sh
-```
-
 ### Set autorun.sh to run at boot
 Add autostart instructions to `wayfire.ini`
 ```
