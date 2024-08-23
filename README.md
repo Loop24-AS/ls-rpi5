@@ -3,9 +3,7 @@
 
 The starting point of the setup is a Raspberry Pi 5 running on Raspberry Pi OS Debian 12 (Bookworm) with desktop, using its default Wayfire Wayland compositor. Release date: July 4 2024.
 
-![LoopSign logo](/assets/images/splash.png)
-
-![LoopSign logo](/assets/images/splash.png)
+![LoopSign logo](splash.png)
 
 ## The concept
 The purpose of the setup is to make the Raspberry Pi work as an unattended LoopSign player. Its main job is to launch the user's LoopSign screen, a static URL, in a fullscreen Chromium window. A set of bash scripts are part of this setup to make the Pi behave as intended and stably over time:
