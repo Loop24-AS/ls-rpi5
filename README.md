@@ -12,9 +12,11 @@ The purpose of the setup is to make the Raspberry Pi work as an unattended LoopS
  - If after the NTP sync, the script notices that it's been more than 30 days since the last NTP sync, it runs `systemupdatedialog.sh`, which will do a full system update and reoot.
  - Pulls this repository for changes and implements any updates. If there are updates to itself (i.e. `autorun.sh`), the script restarts using the new version of itself.
  - Re-checks the screen resolution in case there are updates to `setresolution.sh` after the `git pull`.
- - Starts autorefresh.sh which will periodically (originally every three hours) do a cache refresh of Chromium if it's running.
- - Runs generatehash.sh to generate a unique seven-character code. The code is unique and based on the Pi's ethernet MAC address, and it will always stay the same for every specific Raspberry Pi when the script is re-run.
- - Runs loopsign.sh to launch Chromium in fullscreen with the LoopSign URL. The hash code from the previous step is a unique part of the URL, making it easy for the user to pair the player to their corresponding LoopSign screen without needing to connect to and control the player's settings.
+ - Starts `autorefresh.sh` which will periodically (originally every three hours) do a cache refresh of Chromium if it's running.
+ - Runs `generatehash.sh` to generate a unique seven-character code. The code is unique and based on the Pi's ethernet MAC address, and it will always stay the same for every specific Raspberry Pi when the script is re-run.
+ - Runs `loopsign.sh` to launch Chromium in fullscreen with the LoopSign URL. The hash code from the previous step is a unique part of the URL, making it easy for the user to pair the player to their corresponding LoopSign screen without needing to connect to and control the player's settings.
+- It usually takes less than a minute from the desktop environment is loaded until Chromium is launched.
+- Throughout the boot/startup process, the user is kept somewhat informed via different Zenity dialogs.
 
 ## Setup instructions
 
