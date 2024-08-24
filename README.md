@@ -22,7 +22,7 @@ The purpose of the setup is to make the Raspberry Pi work as an unattended LoopS
 
 ## Setup instructions
 
-The image is burnt on a high speed 16 GB MicroSD card. Username: loopsign || Password: loop24
+The Raspberry Pi OS image is burnt on a high speed 16 GB MicroSD card. Username: loopsign || Password: loop24
 
 ### Clone the hideaway repository
 Make SSH key pair.
