@@ -1,7 +1,7 @@
 # ls-rpi5
 ## Shell scripts and setup for using Raspberry Pi 5 as LoopSign player
 
-The starting point of the setup is a Raspberry Pi 5 running on Raspberry Pi OS Debian 12 (Bookworm) with desktop, using its default Wayfire Wayland compositor. Release date: July 4 2024.
+The starting point of the setup is a Raspberry Pi 5 running on Raspberry Pi OS Debian 12 (Bookworm) with desktop, using its default Wayfire Wayland compositor. Release date: July 4 2024. Download [here](https://downloads.raspberrypi.com/raspios_arm64/images/raspios_arm64-2024-07-04/2024-07-04-raspios-bookworm-arm64.img.xz).
 
 ![LoopSign logo](LoopSign-logo.png)
 
