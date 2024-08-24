@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set resolution to 1920x1080@60Hz
-sudo chmod +x /home/loopsign/ls-rpi5/setresolution.sh
-/home/loopsign/ls-rpi5/setresolution.sh
+chmod +x ~/ls-rpi5/setresolution.sh
+~/ls-rpi5/setresolution.sh
 
 # Restart udevmon to hide cursor
 sudo systemctl restart udevmon
@@ -37,8 +37,8 @@ check_internet_and_time_sync() {
             thirty_days_in_seconds=$((30 * 24 * 60 * 60))
             if [ $time_difference -ge $thirty_days_in_seconds ]; then
                 echo "Time discrepancy is 30 days or more. Running additional script to update the OS and reboot..."
-                sudo chmod +x /home/loopsign/ls-rpi5/systemupdatedialog.sh
-                /home/loopsign/ls-rpi5/systemupdatedialog.sh
+                chmod +x ~/ls-rpi5/systemupdatedialog.sh
+                sudo ~/ls-rpi5/systemupdatedialog.sh
             else
                 echo "Time discrepancy is less than 30 days. No additional script will be run."
             fi
@@ -57,7 +57,7 @@ check_internet_and_time_sync() {
 
 # Function to update the repository using git reset --hard and git pull with rebase
 update_repository() {
-    local REPO_DIR="/home/loopsign/ls-rpi5"
+    local REPO_DIR="~/ls-rpi5"
 
     if [ -d "$REPO_DIR/.git" ]; then
         echo "Resetting repository to the last commit with git reset --hard..."
@@ -75,8 +75,8 @@ update_repository() {
 
 # Function to schedule the master script update and restart
 schedule_master_script_update_and_restart() {
-    NEW_SCRIPT_PATH="/home/loopsign/ls-rpi5/autorun.sh"
-    CURRENT_SCRIPT_PATH="/home/loopsign/autorun.sh"
+    NEW_SCRIPT_PATH="~/ls-rpi5/autorun.sh"
+    CURRENT_SCRIPT_PATH="~/autorun.sh"
 
     if [ -f "$NEW_SCRIPT_PATH" ]; then
         NEW_HASH=$(sha256sum "$NEW_SCRIPT_PATH" | awk '{print $1}')
@@ -85,7 +85,7 @@ schedule_master_script_update_and_restart() {
         if [ "$NEW_HASH" != "$CURRENT_HASH" ]; then
             echo "New version detected. Scheduling master script update and restart..."
             # Create a temporary script to perform the update and restart
-            cat <<EOF > /home/loopsign/update_and_restart.sh
+            cat <<EOF > ~/update_and_restart.sh
 #!/bin/bash
 sleep 2  # Ensure the original script has time to finish
 mv "$NEW_SCRIPT_PATH" "$CURRENT_SCRIPT_PATH"
@@ -93,8 +93,8 @@ chmod +x "$CURRENT_SCRIPT_PATH"
 /bin/bash "$CURRENT_SCRIPT_PATH"  # Restart the updated master script
 rm -- "\$0"  # Delete this temporary script after execution
 EOF
-            chmod +x /home/loopsign/update_and_restart.sh
-            nohup /home/loopsign/update_and_restart.sh > /dev/null 2>&1 &  # Run the update and restart in the background
+            chmod +x ~/update_and_restart.sh
+            nohup ~/update_and_restart.sh > /dev/null 2>&1 &  # Run the update and restart in the background
             exit 0  # Exit the current script to allow the update to take place
         else
             echo "Master script is already up to date."
@@ -137,7 +137,7 @@ pkill zenity
 start_countdown
 
 # Run the updated scripts
-cd /home/loopsign/ls-rpi5
+cd ~/ls-rpi5
 chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh reboot.sh systemupdatedialog.sh hidecursor.sh loopsignsplash.sh pishrink.sh updateandreboot.sh # Adjust filenames as needed
 ./setresolution.sh
 nohup ./autorefresh.sh &
