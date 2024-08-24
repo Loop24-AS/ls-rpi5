@@ -37,6 +37,17 @@ ssh-add ~/.ssh/id_rsa2
 Deploy the public key to the Github repository.
 Copy the key `cat ~/.ssh/id_rsa2.pub` and paste it in the Github repository settings (Settings --> Deploy keys ---> Add deploy key). Set it to read-only access.
 
+Automatically accept the SSH host key for github.com
+```
+nano ~/.ssh/config
+```
+```
+Host github.com
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+```
+Ctrl + O to save and ctrl + X to exit Nano.
+
 Clone the repository.
 ```
 cd /home/loopsign
@@ -55,17 +66,6 @@ ssh-add ~/.ssh/id_rsa
 ```
 Deploy the public key to the Github repository.
 Copy the key `cat ~/.ssh/id_rsa.pub` and paste it in the Github repository settings (Settings --> Deploy keys ---> Add deploy key). Set it to read-only access.
-
-Automatically accept the SSH host key for github.com
-```
-nano ~/.ssh/config
-```
-```
-Host github.com
-    StrictHostKeyChecking no
-    UserKnownHostsFile=/dev/null
-```
-Ctrl + O to save and ctrl + X to exit Nano.
 
 Clone the repository.
 ```
