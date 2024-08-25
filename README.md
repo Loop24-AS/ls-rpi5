@@ -111,14 +111,14 @@ sudo apt remove geany firefox -y && sudo apt autoremove -y
 ```
 ### Configure and set LoopSign Plymouth theme to enable LoopSign splash at boot
 ```
-sudo chmod +x /home/loopsign/ls-rpi5/loopsignsplash.sh
-/home/loopsign/ls-rpi5/loopsignsplash.sh
+chmod +x ~/ls-rpi5/loopsignsplash.sh
+~/ls-rpi5/loopsignsplash.sh
 ```
 
 ### Install and activate tweak to hide cursor
 ```
-sudo chmod +x /home/loopsign/ls-rpi5/hidecursor.sh
-/home/loopsign/ls-rpi5/hidecursor.sh
+chmod +x ~/ls-rpi5/hidecursor.sh
+~/ls-rpi5/hidecursor.sh
 ```
 
 ## Changes set in the GUI
