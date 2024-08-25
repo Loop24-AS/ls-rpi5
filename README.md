@@ -50,7 +50,7 @@ Ctrl + O to save and ctrl + X to exit Nano.
 
 Clone the repository.
 ```
-cd /home/loopsign
+cd ~
 git clone git@github.com:Loop24-AS/hideaway.git
 ```
 
@@ -69,13 +69,13 @@ Copy the key `cat ~/.ssh/id_rsa.pub` and paste it in the Github repository setti
 
 Clone the repository.
 ```
-cd /home/loopsign
+cd ~
 git clone git@github.com:Loop24-AS/ls-rpi5.git
 ```
 Copy `autorun.sh` to `/home/loopsign` and make it executable.
 ```
-cp /home/loopsign/ls-rpi5/autorun.sh /home/loopsign/autorun.sh
-sudo chmod +x /home/loopsign/autorun.sh
+cp ~/ls-rpi5/autorun.sh ~/autorun.sh
+chmod +x ~/autorun.sh
 ```
 
 ### Set autorun.sh to run at boot
