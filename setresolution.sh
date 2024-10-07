@@ -33,4 +33,4 @@ for OUTPUT in $CONNECTED_OUTPUTS; do
     fi
 done
 
-echo "Resolution check script completed."
+echo "Resolution check script done."
