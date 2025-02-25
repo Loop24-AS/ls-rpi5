@@ -14,37 +14,15 @@ check_internet_and_time_sync() {
     # Flag to track whether the dialog box has been displayed
     displayed=false
 
-    # Capture the system time before synchronization
-    before_sync_time=$(date +%s)
-    echo "Before sync time: $before_sync_time"
-
     # Wait until the time has been synced
     while true; do
         # Check if the system time has been synchronized
         if ntpq -p | grep "*"; then
             synced=true
             echo "System time has been synchronized."
-            
-            # Capture the system time after synchronization
-            after_sync_time=$(date +%s)
-            echo "After sync time: $after_sync_time"
-
-            # Calculate the time difference in seconds
-            time_difference=$((after_sync_time - before_sync_time))
-            echo "Time difference (in seconds): $time_difference"
-
-            # Check if the time difference is 30 days or more (in seconds)
-            thirty_days_in_seconds=$((30 * 24 * 60 * 60))
-            if [ $time_difference -ge $thirty_days_in_seconds ]; then
-                echo "Time discrepancy is 30 days or more. Running additional script to update the OS and reboot..."
-                chmod +x /home/loopsign/ls-rpi5/systemupdatedialog.sh
-                sudo /home/loopsign/ls-rpi5/systemupdatedialog.sh
-            else
-                echo "Time discrepancy is less than 30 days. No additional script will be run."
-            fi
-
             break
         fi
+        
         # Display a message to the user if the time has not yet been synced and the dialog has not yet been displayed
         if ! $synced && ! $displayed; then
             echo "Displaying initial zenity message about time sync."
@@ -121,6 +99,20 @@ start_countdown() {
                --no-cancel &
 }
 
+# Check to see if system update log file exists, and if it doesn't run the update script
+check_update_history() {
+    file="/var/log/player_update.log"
+    script="/home/loopsign/ls-rpi5/systemupdatedialog.sh"
+
+    if [ ! -f "$file" ]; then
+        echo "File $file does not exist. Executing update script."
+        chmod +x "$script"
+        sudo "$script"
+    else
+        echo "File $file exists. No action needed."
+    fi
+}
+
 # Check internet connection and time synchronization and run updates if neccessary
 check_internet_and_time_sync
 
@@ -142,4 +134,8 @@ chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh reboot.sh 
 ./setresolution.sh
 nohup ./autorefresh.sh &
 ./hashgenerator.sh
-./loopsign.sh
+./loopsign.sh &
+sleep 15
+check_update_history
+sudo ./updateandreboot.sh
+sudo ./reboot.sh

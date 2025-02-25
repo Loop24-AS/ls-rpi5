@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Desired reboot time (24-hour format)
-REBOOT_TIME="06:00"
+# Calculate seconds until 6 AM tomorrow
+CURRENT_HOUR=$(date +"%H")
+CURRENT_MINUTE=$(date +"%M")
+CURRENT_SECOND=$(date +"%S")
 
-# Get the current time in HH:MM format
-CURRENT_TIME=$(date +"%H:%M")
+HOURS_UNTIL_6AM=$(( (24 - CURRENT_HOUR + 6) % 24 ))
+SECONDS_UNTIL_6AM=$(( HOURS_UNTIL_6AM * 3600 - CURRENT_MINUTE * 60 - CURRENT_SECOND ))
 
-# Wait until the desired time to reboot
-while [ "$CURRENT_TIME" != "$REBOOT_TIME" ]; do
-    sleep 55
-    CURRENT_TIME=$(date +"%H:%M")
-done
+echo "Scheduling reboot for 6 AM tomorrow..."
+echo "Sleeping for $SECONDS_UNTIL_6AM seconds..."
+sleep "$SECONDS_UNTIL_6AM"
 
-# Reboot the system
+echo "Rebooting system now..."
 sudo reboot
