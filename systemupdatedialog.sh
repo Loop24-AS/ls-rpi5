@@ -6,7 +6,7 @@ LOGFILE="/var/log/player_update.log"
 # Show an initial Zenity information dialog before updates start
 zenity --info \
        --title="System Update in Progress" \
-       --text="This is a fresh install of the LoopSign Player.\n\nTherefore, it has now started to download and install system updates in the background. Please don't reboot the player or disconnect it from power.\n\nWhen the updates are completed, the player will automatically reboot.\n\nThe below code will stay the same after reboot, so you can safely use it to pair with your LoopSign account." &
+       --text="This is a fresh install of the LoopSign Player. Therefore, it has now started to download and install system updates in the background. Please don't reboot the player or disconnect it from power; the udpate process will only take a few minutes.\n\nWhen the updates are completed, the player will automatically reboot.\n\nThe below code will stay the same after reboot, so you can safely use it to pair with your LoopSign account right away." &
 
 INFO_PID=$!  # Store the process ID of the Zenity dialog
 
