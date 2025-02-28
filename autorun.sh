@@ -36,15 +36,45 @@ check_internet_and_time_sync() {
 # Function to update the repository using git reset --hard and git pull with rebase
 update_repository() {
     local REPO_DIR="/home/loopsign/ls-rpi5"
+    local CONFIG_FILE="/home/loopsign/config"
+    local BRANCH="prod"  # Default to "prod" for production
 
+    # Check if the configuration file exists
+    if [ -f "$CONFIG_FILE" ]; then
+        # Read the branch name directly from the configuration file
+        BRANCH=$(cat "$CONFIG_FILE" | tr -d '[:space:]')
+
+        # If the config file is empty, fall back to the default "prod"
+        if [ -z "$BRANCH" ]; then
+            echo "Config file is empty. Defaulting to 'prod'."
+            BRANCH="prod"
+        fi
+    else
+        echo "Config file does not exist. Creating it with the default branch 'prod'."
+        echo "prod" > "$CONFIG_FILE"  # Create the config file with the default branch
+    fi
+
+    # Proceed with the repository update
     if [ -d "$REPO_DIR/.git" ]; then
         echo "Resetting repository to the last commit with git reset --hard..."
         cd "$REPO_DIR"
         git reset --hard
 
-        echo "Pulling the latest changes with git pull --rebase..."
-        git pull --rebase
-        return 0
+        echo "Fetching latest changes..."
+        git fetch origin
+
+        echo "Checking if branch $BRANCH exists..."
+        if git show-ref --verify --quiet refs/heads/$BRANCH; then
+            echo "Branch $BRANCH exists. Switching to it..."
+            git checkout $BRANCH
+        else
+            echo "Warning: Branch '$BRANCH' does not exist. Falling back to 'prod' branch..."
+            BRANCH="prod"  # Fallback to prod if the branch doesn't exist
+            git checkout $BRANCH
+        fi
+
+        echo "Pulling the latest changes from $BRANCH..."
+        git pull --rebase origin $BRANCH
     else
         echo "Repository directory does not exist or is not a git repository. Exiting."
         exit 1
