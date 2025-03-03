@@ -56,25 +56,24 @@ update_repository() {
 
     # Proceed with the repository update
     if [ -d "$REPO_DIR/.git" ]; then
-        echo "Resetting repository to the last commit with git reset --hard..."
         cd "$REPO_DIR"
-        git reset --hard
+
+        # Rename incorrect remote repository reference to 'origin' if necessary
+        if git remote get-url StrictHostKeyChecking=no >/dev/null 2>&1; then
+            echo "Renaming remote repository from 'StrictHostKeyChecking=no' to 'origin'..."
+            git remote rename StrictHostKeyChecking=no origin
+        fi
 
         echo "Fetching latest changes..."
         git fetch origin
 
-        echo "Checking if branch $BRANCH exists..."
-        if git show-ref --verify --quiet refs/heads/$BRANCH; then
-            echo "Branch $BRANCH exists. Switching to it..."
-            git checkout $BRANCH
-        else
-            echo "Warning: Branch '$BRANCH' does not exist. Falling back to 'prod' branch..."
-            BRANCH="prod"  # Fallback to prod if the branch doesn't exist
-            git checkout $BRANCH
-        fi
+        echo "Switching to branch $BRANCH..."
+        git switch $BRANCH
 
-        echo "Pulling the latest changes from $BRANCH..."
-        git pull --rebase origin $BRANCH
+        echo "Resetting local branch to match remote branch..."
+        git reset --hard
+
+        echo "Repository successfully updated and mirrored from remote branch $BRANCH."
     else
         echo "Repository directory does not exist or is not a git repository. Exiting."
         exit 1
