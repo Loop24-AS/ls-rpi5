@@ -70,11 +70,8 @@ update_repository() {
         echo "Fetching latest changes..."
         git fetch origin
 
-        echo "Switching to branch $BRANCH..."
-        git switch $BRANCH
-
-        echo "Resetting local branch to match remote branch..."
-        git reset --hard
+        echo "Resetting local branch to match remote branch with correct branch..."
+        git reset --hard origin/$BRANCH
 
         echo "Repository successfully updated and mirrored from remote branch $BRANCH."
     else
