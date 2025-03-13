@@ -164,7 +164,7 @@ chmod +x setresolution.sh autorefresh.sh hashgenerator.sh loopsign.sh reboot.sh 
 nohup ./autorefresh.sh &
 ./hashgenerator.sh
 ./loopsign.sh &
-seep 15
-#check_update_history
-#sudo ./updateandreboot.sh
+sleep 15
+# check_update_history
+# sudo ./updateandreboot.sh
 sudo ./reboot.sh
