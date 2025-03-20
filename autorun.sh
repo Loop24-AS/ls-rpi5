@@ -154,6 +154,14 @@ schedule_master_script_update_and_restart
 # Kill any running Zenity dialogs
 pkill zenity
 
+## Set cron jobs
+chmod +x /home/loopsign/ls-rpi5/define-sudo-crontab.sh
+/home/loopsign/ls-rpi5/define-sudo-crontab.sh
+
+## Check screen connection
+chmod +x /home/loopsign/ls-rpi5/hotplug-connection-monitor.sh
+/home/loopsign/ls-rpi5/hotplug-connection-monitor.sh
+
 # Show countdown while secondary scripts run
 start_countdown
 
