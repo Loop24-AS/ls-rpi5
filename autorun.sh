@@ -155,6 +155,7 @@ schedule_master_script_update_and_restart
 pkill zenity
 
 ## Set cron jobs
+chmod +x /home/loopsign/ls-rpi5/hotplug-restart-lightdm.sh
 chmod +x /home/loopsign/ls-rpi5/define-sudo-crontab.sh
 /home/loopsign/ls-rpi5/define-sudo-crontab.sh
 
