@@ -157,7 +157,7 @@ pkill zenity
 ## Set cron jobs
 chmod +x /home/loopsign/ls-rpi5/hotplug-restart-lightdm.sh
 chmod +x /home/loopsign/ls-rpi5/define-sudo-crontab.sh
-/home/loopsign/ls-rpi5/define-sudo-crontab.sh
+sudo /home/loopsign/ls-rpi5/define-sudo-crontab.sh
 
 ## Check screen connection
 chmod +x /home/loopsign/ls-rpi5/hotplug-connection-monitor.sh
