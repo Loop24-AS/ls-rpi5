@@ -11,7 +11,7 @@ refresh_chromium() {
     # Ensure the script runs in the Wayland session
     export WAYLAND_DISPLAY=$(echo $WAYLAND_DISPLAY)
     export XDG_RUNTIME_DIR=$(echo $XDG_RUNTIME_DIR)
-    wtype -M ctrl -M shift -k R -m shift -m ctrl
+    wtype -M ctrl -k R -m ctrl
 }
 
 while true; do
