@@ -4,14 +4,14 @@
 
 rm -f \
   ~/.config/chromium/Singleton* \
-  ~/.config/chromium/Crashpad/completed \
-  ~/.config/chromium/Crashpad/pending/* \
-  ~/.config/chromium/Crashpad/attachments/* \
-  ~/.config/chromium/Default/Sessions/* \
-  ~/.config/chromium/Default/Current\ Session \
-  ~/.config/chromium/Default/Current\ Tabs \
-  ~/.config/chromium/Default/Last\ Session \
-  ~/.config/chromium/Default/Last\ Tabs
+#  ~/.config/chromium/Crashpad/completed \
+#  ~/.config/chromium/Crashpad/pending/* \
+#  ~/.config/chromium/Crashpad/attachments/* \
+#  ~/.config/chromium/Default/Sessions/* \
+#  ~/.config/chromium/Default/Current\ Session \
+#  ~/.config/chromium/Default/Current\ Tabs \
+#  ~/.config/chromium/Default/Last\ Session \
+#  ~/.config/chromium/Default/Last\ Tabs
 
 # Start Chromium in kiosk mode and navigate to LoopSign URL
 
