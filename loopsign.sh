@@ -13,6 +13,9 @@ rm -f \
 #  ~/.config/chromium/Default/Last\ Session \
 #  ~/.config/chromium/Default/Last\ Tabs
 
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' ~/.config/chromium/Default/Preferences
+sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences
+
 # Start Chromium in kiosk mode and navigate to LoopSign URL
 
 # Read the hash from hash.txt on the Desktop
