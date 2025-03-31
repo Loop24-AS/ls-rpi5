@@ -4,9 +4,6 @@
 chmod +x /home/loopsign/ls-rpi5/setresolution.sh
 /home/loopsign/ls-rpi5/setresolution.sh
 
-# Remove Chromium profile lock (in case the user changes hostname on the Pi)
-sudo rm /home/loopsign/.config/chromium/SingletonLock
-
 # Restart udevmon to hide cursor
 sudo systemctl restart udevmon
 
