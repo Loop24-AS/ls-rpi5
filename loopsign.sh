@@ -6,4 +6,4 @@
 HASH=$(cat /home/loopsign/Desktop/.hash.txt)
 
 # Launch Chromium in kiosk mode with the specified URL
-chromium-browser --disable-media-stream --start-maximized --start-fullscreen --disable-desktop-notifications --no-first-run --restore-last-session https://play.loopsign.eu/hash/$HASH
+chromium-browser --disable-media-stream --start-maximized --start-fullscreen --disable-desktop-notifications --no-first-run --disable-session-crashed-bubble https://play.loopsign.eu/hash/$HASH
