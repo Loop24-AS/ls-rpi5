@@ -38,6 +38,7 @@ update_repository() {
     local REPO_DIR="/home/loopsign/ls-rpi5"
     local CONFIG_FILE="/home/loopsign/config"
     local BRANCH="prod"  # Default to "prod" for production
+    local GITHUB_REPO_URL="https://github.com/Loop24-AS/ls-rpi5.git"
 
     # Check if the configuration file exists
     if [ -f "$CONFIG_FILE" ]; then
@@ -63,6 +64,9 @@ update_repository() {
             echo "Renaming remote repository from 'StrictHostKeyChecking=no' to 'origin'..."
             git remote rename StrictHostKeyChecking=no origin
         fi
+
+        # Force remote URL to be HTTPS (read-only)
+        git remote set-url origin "$GITHUB_REPO_URL"
 
         echo "Fetching latest changes..."
         git fetch origin
