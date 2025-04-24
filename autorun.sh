@@ -4,9 +4,6 @@
 chmod +x /home/loopsign/ls-rpi5/setresolution.sh
 /home/loopsign/ls-rpi5/setresolution.sh
 
-# Remove Chromium profile lock (in case the user changes hostname on the Pi)
-sudo rm /home/loopsign/.config/chromium/SingletonLock
-
 # Restart udevmon to hide cursor
 sudo systemctl restart udevmon
 
@@ -41,6 +38,7 @@ update_repository() {
     local REPO_DIR="/home/loopsign/ls-rpi5"
     local CONFIG_FILE="/home/loopsign/config"
     local BRANCH="prod"  # Default to "prod" for production
+    local GITHUB_REPO_URL="https://github.com/Loop24-AS/ls-rpi5.git"
 
     # Check if the configuration file exists
     if [ -f "$CONFIG_FILE" ]; then
@@ -66,6 +64,9 @@ update_repository() {
             echo "Renaming remote repository from 'StrictHostKeyChecking=no' to 'origin'..."
             git remote rename StrictHostKeyChecking=no origin
         fi
+
+        # Force remote URL to be HTTPS (read-only)
+        git remote set-url origin "$GITHUB_REPO_URL"
 
         echo "Fetching latest changes..."
         git fetch origin
@@ -154,6 +155,15 @@ schedule_master_script_update_and_restart
 # Kill any running Zenity dialogs
 pkill zenity
 
+## Set cron jobs
+chmod +x /home/loopsign/ls-rpi5/hotplug-restart-lightdm.sh
+chmod +x /home/loopsign/ls-rpi5/define-sudo-crontab.sh
+sudo /home/loopsign/ls-rpi5/define-sudo-crontab.sh
+
+## Check screen connection
+chmod +x /home/loopsign/ls-rpi5/hotplug-connection-monitor.sh
+/home/loopsign/ls-rpi5/hotplug-connection-monitor.sh
+
 # Show countdown while secondary scripts run
 start_countdown
 
@@ -167,4 +177,4 @@ nohup ./autorefresh.sh &
 sleep 15
 # check_update_history
 # sudo ./updateandreboot.sh
-sudo ./reboot.sh
+# sudo ./reboot.sh

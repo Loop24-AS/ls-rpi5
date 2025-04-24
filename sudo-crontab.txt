@@ -1,0 +1,2 @@
+* * * * * /home/loopsign/ls-rpi5/hotplug-restart-lightdm.sh
+
