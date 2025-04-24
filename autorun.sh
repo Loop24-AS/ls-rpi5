@@ -177,4 +177,4 @@ nohup ./autorefresh.sh &
 sleep 15
 # check_update_history
 # sudo ./updateandreboot.sh
-sudo ./reboot.sh
+# sudo ./reboot.sh
