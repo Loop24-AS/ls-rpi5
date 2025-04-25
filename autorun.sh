@@ -1,5 +1,8 @@
 #!/bin/bash
 
+exec > /tmp/autorun.log 2>&1
+echo "Script started at $(date)"
+
 # Set resolution to 1920x1080@60Hz
 chmod +x /home/loopsign/ls-rpi5/setresolution.sh
 /home/loopsign/ls-rpi5/setresolution.sh
