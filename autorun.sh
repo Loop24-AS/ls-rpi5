@@ -164,8 +164,8 @@ chmod +x /home/loopsign/ls-rpi5/define-sudo-crontab.sh
 sudo /home/loopsign/ls-rpi5/define-sudo-crontab.sh
 
 ## Check screen connection
-chmod +x /home/loopsign/ls-rpi5/hotplug-connection-monitor.sh
-/home/loopsign/ls-rpi5/hotplug-connection-monitor.sh
+#chmod +x /home/loopsign/ls-rpi5/hotplug-connection-monitor.sh
+#/home/loopsign/ls-rpi5/hotplug-connection-monitor.sh
 
 # Show countdown while secondary scripts run
 start_countdown
